@@ -27,7 +27,13 @@ while idx < len(all_lines):
     
 prepared_students = []
 for student in all_students:
-    prepared_students.append(f'{student[1].strip()}, {student[3].strip()}, {student[4].strip()}, {student[-1].strip()}')
+    prepared_students.append([student[1].strip(), student[3].strip(), student[4].strip(), student[-1].strip()])
 
 for student in prepared_students:
     print(student)
+    
+df = pd.DataFrame(prepared_students, columns=['Name', 'Surname', 'Level', 'GPA'])
+df = df.sort_values(by=['GPA'])
+# df = df[df['Level'] == 'основне академске']
+
+df.to_csv('stipendija.csv')
