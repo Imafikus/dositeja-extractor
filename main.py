@@ -6,8 +6,6 @@ with open('test.txt', 'r', encoding='utf-8', errors='ignore') as f:
 starting_place = 1
 ending_place = 2050
 
-
-
 current_place = 1
 
 idx = 0
@@ -31,9 +29,10 @@ for student in all_students:
 
 for student in prepared_students:
     print(student)
-    
+
+#? Place your filters here
 df = pd.DataFrame(prepared_students, columns=['Name', 'Surname', 'Level', 'GPA'])
 df = df.sort_values(by=['GPA'])
-# df = df[df['Level'] == 'основне академске']
+df = df[df['Level'] == 'основне академске' or df['Level'] == 'интегрисане академске']
 
 df.to_csv('stipendija.csv')
